@@ -1,0 +1,89 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global/}
+    \entry{ABC.2017}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=9780f419932493894b93b4224f28b233}{%
+           family={Nachname},
+           familyi={N\bibinitperiod},
+           given={Vorname},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{9780f419932493894b93b4224f28b233}
+      \strng{fullhash}{9780f419932493894b93b4224f28b233}
+      \strng{authornamehash}{9780f419932493894b93b4224f28b233}
+      \strng{authorfullhash}{9780f419932493894b93b4224f28b233}
+      \field{sortinit}{N}
+      \field{sortinithash}{1163c28585427c673ad5a010cbf82f52}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{day}{2}
+      \field{month}{11}
+      \field{note}{Zugriff 7-11-03 000:02 MEZ}
+      \field{shorttitle}{Beispiel}
+      \field{title}{Beispiel-Blogbeitrag}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2017}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://google.com/
+      \endverb
+    \endentry
+    \entry{ABC.2013}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=9780f419932493894b93b4224f28b233}{%
+           family={Nachname},
+           familyi={N\bibinitperiod},
+           given={Vorname},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Hamburg}%
+      }
+      \list{publisher}{1}{%
+        {Publisher}%
+      }
+      \strng{namehash}{9780f419932493894b93b4224f28b233}
+      \strng{fullhash}{9780f419932493894b93b4224f28b233}
+      \strng{authornamehash}{9780f419932493894b93b4224f28b233}
+      \strng{authorfullhash}{9780f419932493894b93b4224f28b233}
+      \field{sortinit}{N}
+      \field{sortinithash}{1163c28585427c673ad5a010cbf82f52}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{edition}{6. überarbeitete Auflage}
+      \field{shorttitle}{Beispieltitel}
+      \field{title}{Für ein Beispiel}
+      \field{year}{2013}
+      \verb{url}
+      \verb http://content-select.com/index.php?id=bib_view&ean=9783407294524
+      \endverb
+      \keyw{Beispiel}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

@@ -1,0 +1,19 @@
+%\pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
+\newpage
+%\setcounter{page}{1}
+\section*{Anhang} 
+\addcontentsline{toc}{section}{Anhang} 
+
+%\addcontentsline{toc}{section}{Anhang 1: Interview 1} %Die erste Seite wird eingebunden
+\includepdf[pages=1, link, linkname=Interview1, noautoscale=true, scale=0.9, pagecommand={\section*{Anhang 1: Interview 1}\thispagestyle{empty}}]{interviews/interview1.pdf} 
+%% Die restlichen Seiten werden eingebunden.
+\includepdf[pages=2-last, link, linkname=Interview1, noautoscale=true, scale=0.9, pagecommand={\thispagestyle{empty}}]{interviews/interview1.pdf} 
+
+%\addcontentsline{toc}{section}{Anhang 7: Code-System} 
+\includepdf[pages=1, link, linkname=CodeSystem, noautoscale=true, scale=0.9,
+pagecommand={\section*{Anhang 2: Code-System}\thispagestyle{empty}}]{anhang/CodeUebersicht.pdf} 
+\label{anhang:code}
+% \includepdf[pages=2-last, link, linkname=CodeSystem, noautoscale=true, scale=0.9, % % pagecommand={\thispagestyle{empty}}]{anhang/CodeUebersicht.pdf} 
+
+
+

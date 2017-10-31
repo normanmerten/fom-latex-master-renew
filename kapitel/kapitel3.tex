@@ -1,0 +1,65 @@
+\newpage
+\section{Tabellen und Grafiken}
+	Jede wissenschaftliche Arbeit soll mit grafischen Elementen ergänzt werden. Dieses Kapitel beschäftigt sich mit dem Einfügen von Grafiken und Tabellen:
+	
+	\begin{figure}[H]
+		\caption{Blauer Kasten}
+		\includegraphics[width=\textwidth, frame]{abbildungen/Grafik.png}
+		\label{abb:externintern} 
+		
+		\text{Quelle: Eigene Abbildung}
+	\end{figure}
+
+
+	Die Grafik wird mit folgendem Befehl integriert:
+	\begin{verbatim}
+	\begin{figure}[H]
+		\caption{Blauer Kasten}
+		\includegraphics[width=\textwidth, frame]{abbildungen/Grafik.png}
+		\label{abb:externintern} 
+		
+		\text{Quelle: Eigene Abbildung}
+	\end{figure}
+	\end{verbatim}
+	
+	
+	Eine Tabelle kann für verschiedene Inhalte verwendet werden und ist nicht so wirklich schwierig einzubinden. Hierzu sollte man am besten
+			\begin{table}[H]
+		\caption{Titel der Tabelle}
+		\begin{tabular}[ht]{|c|c|} \hline
+			Spalte 1 & Spalte 2   \\ \hline
+			A1 &  B1 \\ \hline
+			A2 &  B2 \\ \hline 
+			A3 &  B3 \\ \hline 
+			A4 &  B4 \\ \hline 
+			A5 &  B5 \\ \hline 
+		\end{tabular} \\
+		
+		\text{Quelle: Eigene Darstellung}
+		\label{tbl:tabelle2}
+	\end{table}
+
+	\begin{verbatim}
+	\begin{table}[H]
+		\caption{Übersicht der Blog-Posts auf http://devops4itsm.de}
+		\begin{tabular}[ht]{|c|c|} \hline
+			Spalte 1 & Spalte 2   \\ \hline
+			A1 &  B1 \\ \hline
+			A2 &  B2 \\ \hline 
+			A3 &  B3 \\ \hline 
+			A4 &  B4 \\ \hline 
+			A5 &  B5 \\ \hline 
+		\end{tabular} \\
+	
+		\text{Quelle: Eigene Darstellung}
+		\label{tbl:tabelle2}
+	\end{table}
+	\end{verbatim}
+	
+\section{Ende}
+	Das war es dann auch schon. Ich hoffe, dass dieses ein guter Einstieg ist und ein einfacher Einstieg in LaTex gelingt.
+
+
+	
+	
+	

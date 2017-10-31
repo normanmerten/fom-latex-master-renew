@@ -1,0 +1,353 @@
+% !TeX encoding = UTF-8
+%-----------------------------------
+% Define document and include general packages
+%-----------------------------------
+
+
+%Template
+\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage[a4paper, left=4cm, right=2cm, top=2.8cm, bottom=2.3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
+\usepackage{footnote}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage[table]{xcolor}
+\usepackage{pdfpages} 
+\usepackage{marvosym}			% Verwendung von Symbolen, z.B. perfektes Eurozeichen
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\definecolor{darkblack}{rgb}{0,0,0}
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
+\fontfamily{ptm}\selectfont
+\usepackage{underscore}
+
+
+%Eigener Input
+\pdfminorversion=7
+%\usepackage{hyphenat}
+\hyphenation{Dev-Ops}
+\usepackage{setspace}
+%\onehalfspacing
+%\linespread{1.5}
+
+% Mehrere Fussnoten nacheinander mit Komma separiert
+\usepackage[hang, multiple]{footmisc}
+\setlength{\footnotemargin}{1em}
+
+\usepackage[iso,german]{isodate}
+\usepackage{ifthen}
+
+
+\usepackage{silence}
+\WarningFilter{scrbook}{Usage of package `fancyhdr'}
+
+% todo Aufgaben als Kommentare verfassen für verschiedene Editoren
+\usepackage{todonotes}
+
+
+%Bildüberschrift vergrößern
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup[table]{labelfont=bf, textfont=bf}
+\captionsetup[figure]{labelfont=bf, textfont=bf}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\usepackage[export]{adjustbox}
+
+
+%Pakete für Tabellen
+\usepackage{epstopdf}
+\usepackage{nicefrac} % Brüche
+\usepackage{multirow}
+\usepackage{rotating} % vertikal schreiben
+\usepackage{colortbl}
+\usepackage{mdwlist}
+
+\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
+\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
+% Colors for listings
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+
+% sauber formatierter Quelltext
+\usepackage{listings}
+\lstset{numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	breaklines=true,
+	showstringspaces=false,
+	frame=l ,
+	xleftmargin=5pt,
+	xrightmargin=5pt,
+	basicstyle=\ttfamily\scriptsize,
+	stepnumber=1,
+	keywordstyle=\color{blue},          % keyword style
+  	commentstyle=\color{dkgreen},       % comment style
+  	stringstyle=\color{mauve}         % string literal style
+}
+
+% Biblatex
+\usepackage[
+backend=biber,
+%style=footnote-dw,
+style=verbose-inote,
+citestyle=authoryear,
+url=false,
+isbn=false,
+notetype=footonly,
+hyperref=false,
+sortlocale=de,
+firstinits=true,
+mincrossrefs=1,
+alldates=edtf,
+datezeros=true,
+dateabbrev=true,
+%datezeros=true
+]{biblatex}
+
+%weitere Anpassungen für BibLaTex
+\input{skripte/modsBiblatex}
+
+
+%Bib-Datei einbinden
+\addbibresource{literatur/literatur.bib}
+
+% Pfad fuer Abbildungen
+\graphicspath{{./}{./abbildungen/}}
+
+%-----------------------------------
+% Weitere Ebene einfügen
+\input{skripte/weitereEbene}
+
+%-----------------------------------
+% Zeilenabstand 1,5-zeilig
+%-----------------------------------
+\usepackage{setspace}
+\onehalfspacing
+
+%-----------------------------------
+% Absätze durch eine neue Zeile
+%-----------------------------------
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
+
+\sloppy					%Abstände variieren
+\pagestyle{headings}
+
+%-----------------------------------
+% Abkürzungsverzeichnis
+%-----------------------------------
+\usepackage[intoc]{nomencl}
+\renewcommand{\nomname}{Abkürzungsverzeichnis}
+\setlength{\nomlabelwidth}{.20\textwidth}
+\renewcommand{\nomlabel}[1]{\textbf{#1} \dotfill}
+\setlength{\nomitemsep}{-\parsep}
+\makenomenclature
+
+\usepackage[nohyperlinks, printonlyused]{acronym}
+
+
+
+%-----------------------------------
+% Meta informationen
+%-----------------------------------
+\input{skripte/meta}
+
+%-----------------------------------
+% PDF Meta Daten setzen
+%-----------------------------------
+\hypersetup{
+    pdfinfo={
+        Title={\myTitel},
+        Subject={\myStudiengang},
+        Author={\myAutor},
+        Build=1.1
+    }
+}
+
+%-----------------------------------
+% Umlaute in Code korrekt darstellen
+% siehe auch: https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+%-----------------------------------
+\lstset{literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\'a}}1 {è}{{\'e}}1 {ì}{{\'i}}1 {ò}{{\'o}}1 {ù}{{\'u}}1
+	{À}{{\'A}}1 {È}{{\'E}}1 {Ì}{{\'I}}1 {Ò}{{\'O}}1 {Ù}{{\'U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1
+}
+
+%-----------------------------------
+% Kopfbereich / Header definieren
+%-----------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittg
+%\fancyhead[L]{\leftmark}							% kein Footer vorhanden
+\renewcommand{\headrulewidth}{0.4pt}
+
+%----------------------------------
+% Fusszeile definieren
+%----------------------------------
+\setlength{\footskip}{2cm}
+
+%-----------------------------------
+% Start the document here:
+%-----------------------------------
+\begin{document}
+
+\pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
+\renewcommand{\refname}{Literaturverzeichnis}		% "Literatur" in
+%"Literaturverzeichnis" umbenennen
+\newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
+%Zentriert und umbrechbar
+
+%-----------------------------------
+% Titlepage
+%-----------------------------------
+\begin{titlepage}
+	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+	\begin{center}
+		\vspace{1.5cm}
+			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
+		\vspace{0.9cm}
+		\Large \textbf{\myHochschulName}\\
+		\large{\myHochschulStandort}\\ 
+		
+		\vspace{1.7cm}
+		
+		\large \textbf{\myThesisArt} \\
+		\small{im Studiengang \myStudiengang}
+		
+		\vspace{2cm}
+		
+		
+		
+		\small{zur Erlangung des Grades eines}\\
+		\large{\myAkademischerGrad}\\
+		% Oder für Hausarbeiten:
+		%\textbf{im Rahmen der Lehrveranstaltung}\\
+		%\textbf{\myLehrveranstaltung}\\
+		\vspace{2cm}
+		\small{über das Thema}\\
+		\large \textbf{\myTitel}\\
+		\vspace{1.5cm}
+		\small{von}\\
+		\vspace{0.5cm}
+		\large{\myAutor}
+		
+	\end{center}
+	\normalsize
+	\vfill
+	\begin{tabbing}
+		Links \=MitteL \= MitteR \= Rechts\kill
+		Erstgutachter \> \> \>\myBetreuer\\
+		Matrikelnummer \> \> \> \myMatrikelNr\\
+		Abgabe \> \> \> \myAbgabeDatum
+	\end{tabbing}
+\end{titlepage}
+
+%-------Ende Titelseite-------------
+
+%-----------------------------------
+% Sperrvermerk
+%-----------------------------------
+%\input{kapitel/sperrvermerk}
+
+%-----------------------------------
+% Inhaltsverzeichnis
+%-----------------------------------
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+
+%-----------------------------------
+% Abbildungsverzeichnis
+%-----------------------------------
+\listoffigures
+\newpage
+%-----------------------------------
+% Tabellenverzeichnis
+%-----------------------------------
+\listoftables
+\newpage
+%-----------------------------------
+% Abkürzungsverzeichnis
+%-----------------------------------
+\section*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis} 
+\begin{acronym}[Bash]
+	\acro{A}[A]{Akronym}
+	\acro{B}[B]{B-kronym}
+\end{acronym} 
+\newpage
+%-----------------------------------
+% Seitennummerierung auf arabisch und ab 1 beginnend umstellen
+%-----------------------------------
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%-----------------------------------
+% Kapitel / Inhalte
+%-----------------------------------
+\input{kapitel/einleitung}
+\input{kapitel/kapitel2}
+\input{kapitel/kapitel3}
+
+%-----------------------------------
+% Literaturverzeichnis
+%-----------------------------------
+\newpage
+%\addcontentsline{toc}{section}{Literatur}
+
+\pagenumbering{Roman} %Zähler wieder römisch ausgeben
+\setcounter{page}{6}  %Zähler manuell hochsetzen
+
+%Definieren der Dokumententypen, die verwendet werden dürfen / Interviewmaterial sollte ausgeklammert werden.
+\defbibfilter{BuchArtikel}{% 
+	( type=book or type=article or type=online or type=incollection or type=collection  ) 
+}
+
+%Interviews werden hier durch PDF-Dateien eingebunden. Hierzu wird eine weitere tex-Datei aufgerufen.
+\input{interviews/index}
+
+
+%\printbibliography
+\printbibliography[% 
+heading=bibintoc, 
+filter=BuchArtikel, 
+title={Literaturverzeichnis} 
+]
+% Alternative Darstellung:
+% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
+% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+%\printbibheading
+%\printbibliography[type=article,heading=subbibliography,title={Artikel}]
+%\printbibliography[type=book,heading=subbibliography,title={Bücher}]
+%\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+%\printbibliography[type=misc,heading=subbibliography,title={zus. Beiträge}]
+%\printbibliography[type=incollection,heading=subbibliography,title={Beiträge in}]
+%\printbibliography[type=collection,heading=subbibliography,title={Sammelwerke}]
+
+
+
+% Hier wird die wichtige Erklärung erzeugt.
+\input{kapitel/erklaerung}
+\end{document}

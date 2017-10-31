@@ -1,0 +1,86 @@
+\section{Einleitung}
+\subsection{Hintergrund}
+Dieses ist das erste Unterkapitel und soll natürlich den Hintergrund und die Motivation klären. Gerne möchte ich mit dieser Veröffentlichung einen einfacheren und schneller Einstieg in LaTex ermöglichen, daher werden hier noch einige Inhalte näher erläutert. Das Akronym \ac{A} wird in dem Abkürzungsverzeichnis aufgenommen. Das Aknronym \ac{B} ebenfalls.
+
+
+\subsection{Latex Befehle}
+Hier haben wir jetzt ein weiteres Unterkapitel. Ein Text wird durch den Befehl \begin{verbatim} \textit{\enquote{ }} \end{verbatim} \textit{\enquote{kursiv dargestellt und erhält Gänsefüßchen.}} Dabei dürfen nach dem Text die schließenden  \}\} nicht fehlen.
+
+Der \textbf{fette Text} wird übrigens mit nachfolgenden Befehl dargestellt:
+\begin{verbatim}
+\textbf{fette Text}
+\end{verbatim}
+
+Wenn man das verstanden hat, ist das schon die halbe Miete. In LaTex werden alle Befehle durch diese Konstrukt beschrieben. Weiterhin können noch Parameter übergeben werden. Das Beispiel eines Zitats stellt dies sehr gut dar:
+\begin{verbatim}
+\fullfootcite[Vgl. ][S. 7]{ITEMO.2017} 
+\end{verbatim}
+Der Zitierbefehl übergibt einerseits die Quelle, aber auch die Texte "Vgl." und "S. 7". Wenn man Lust hat eigene Befehle zu erweitern, ist dies durch die Parameterübergabe sehr gut möglich.\fullfootcite[Vgl. ][S. 1]{ABC.2013} Dazu würde ich dann an die einschlägigen Seiten noch einmal verweisen.\blogfootcite[Vgl. ][]{ABC.2017} 
+
+
+
+\subsection{Aufzählungen}
+Das dritte Unterkapitel beschäftigt sich nun mit der Aufzählung. Aufzählungen können unterschiedlich genutzt werden.
+\begin{itemize}
+	\item Erste Aufzählung
+	\item Zweite Aufzählung
+	\item Dritte Aufzählung	
+\end{itemize}
+
+Eine Aufzählung kann mit folgendem Befehl erfolgen:
+\begin{verbatim}
+\begin{itemize}
+\item Erste Aufzählung
+\item Zweite Aufzählung
+\item Dritte Aufzählung	
+\end{itemize}
+\end{verbatim}
+
+Wenn man jedoch eine Nummerierung der einzelnen Punkte erhalten möchte
+\begin{enumerate}
+	\item Erste Aufzählung
+	\item Zweite Aufzählung
+	\item Dritte Aufzählung	
+\end{enumerate}
+ist der nachfolgende Befehl zu wählen:
+\begin{verbatim}
+\begin{enumerate}
+\item Erste Aufzählung
+\item Zweite Aufzählung
+\item Dritte Aufzählung	
+\end{enumerate}
+\end{verbatim}
+
+\section{Kapitel in Latex}
+Dies ist ein Hauptkapitel. der Befehl dazu lautet:
+\begin{verbatim}
+\section{Kapitel in Latex}
+\end{verbatim}
+
+\subsection{Unterkapitel}
+Das Unterkapitel ist relativ einfach zu bestimmen. Man beschreibt einfach das Unter- oder auf Sub-Kapitel.
+\begin{verbatim}
+\subsection{Unterkapitel}
+\end{verbatim}
+
+\subsubsection{Unter-Unterkapitel}
+Das Unter-Unter-Kapitel ist in LaTex-Sprache einfach das Sub-Sub-Kapitel:
+\begin{verbatim}
+\subsubsection{Unter-Unterkapitel}
+\end{verbatim}
+
+\subsection{Zweites Unterkapitel}
+Wir wollen also nun weter zum nächsten Kapitel übergehen.
+
+
+
+
+
+
+
+
+
+
+
+
+ 

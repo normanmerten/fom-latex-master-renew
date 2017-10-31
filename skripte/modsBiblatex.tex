@@ -1,0 +1,280 @@
+%Eigene Anpassungen
+
+\addtokomafont{disposition}{\rmfamily} % Angleichung der Schriftart bei den Überschriften
+
+\DeclareLabeldate{% 
+	\field{date} 
+	\field{year} 
+	\field{eventdate} 
+	\field{origdate} 
+	\literal{nodate} 
+}
+
+\DefineBibliographyStrings{german}{nodate = {{}keine Datumsangabe},}
+
+%-------------------
+
+% Opptionen für Biblatex
+\ExecuteBibliographyOptions{%
+giveninits=false,
+isbn=true, 
+url=true, 
+doi=false, 
+eprint=false,
+maxbibnames=7, % Alle Autoren (kein et al.)
+maxcitenames=2, % et al. ab dem 3. Autor
+backref=false, % Rückverweise auf Zitatseiten
+bibencoding=utf8, % wenn .bib in utf8, sonst ascii
+bibwarn=true, % Warnung bei fehlerhafter bib-Datei
+}%
+
+% et al. an Stelle von u.a.
+\DefineBibliographyStrings{ngerman}{ 
+   andothers = {{et\,al\adddot}},             
+}
+
+% Klammern um das Jahr in der Fußnote
+\renewbibmacro*{cite:labelyear+extrayear}{% 
+  \iffieldundef{labelyear} 
+    {} 
+    {\printtext[bibhyperref]{% 
+       \mkbibparens{% 
+         \printfield{labelyear}% 
+         \printfield{extrayear}}}}}
+
+
+%Hier wird das URL vor der url-Adresse entfernt.
+\DeclareFieldFormat{url}{\url{#1}}
+
+
+%Hier wird der kursive booktitle entfernt
+\DeclareFieldFormat{booktitle}{{#1}}
+
+%Hier wird der kursive title entfernt
+\DeclareFieldFormat[incollection]{title}{{#1}}
+
+%Hier wird der kursive title entfernt
+\DeclareFieldFormat[article]{journaltitle}{{#1}}
+
+%Hier wird der kursive title entfernt
+\DeclareFieldFormat[article]{title}{{#1}}
+
+
+\renewcommand*{\multinamedelim}{\addcomma\space}
+\renewcommand*{\finalnamedelim}{\addcomma\space}
+
+\DeclareNameFormat{last-first}{%
+%	\renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
+  	\ifgiveninits
+    {\usebibmacro{name:family-given}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefix}
+        {\namepartsuffix}
+    }
+    {\usebibmacro{name:family-given}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefix}
+        {\namepartsuffix}
+    }%
+   \usebibmacro{name:andothers}}
+
+\DeclareNameAlias{author}{last-first} 
+
+\DeclareNameAlias{editor}{last-first} 
+
+\DeclareNameAlias{cite-editor}{last-first} 
+
+% Alternative Notation der Fußnoten 
+% Zeigt sowohl den Nachnamen als auch den Vornamen an
+% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003} 
+\DeclareCiteCommand{\fullfootcite}[\mkbibfootnote] 
+  {\usebibmacro{prenote}}                                 
+  {\usebibmacro{citeindex}%
+  	\setunit{\addnbspace}%
+  	\printnames{author}%
+  	{\addcomma\space}%
+  	\printfield{shorttitle}%
+  	\setunit*{,\space}%
+  	\printfield{year}
+  }
+  {\addsemicolon\space}
+  {\usebibmacro{postnote}}
+  
+  %Autoren (Nachname, Vorname)
+  \DeclareNameAlias{default}{family-given}
+  
+% Alternative Notation der Fußnoten 
+% Zeigt sowohl den Nachnamen als auch den Vornamen an
+% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003} 
+\DeclareCiteCommand{\blogfootcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+  	\printnames{author}%
+  	\newunit\addcomma\space
+  	\addcomma \addspace \printfield{shorttitle}%
+  	\addcomma \addspace \printfield{year}}
+  \setunit{}
+  
+  
+% Alternative Notation der Fußnoten 
+% Zeigt sowohl den Nachnamen als auch den Vornamen an
+% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003} 
+\DeclareCiteCommand{\interviewcite}[\mkbibfootnote]
+	{\usebibmacro{prenote}}
+	{\usebibmacro{citeindex}%
+		\printnames{author}%
+		\newunit\addcomma\space
+		\addcomma \addspace \printfield{keywords}%
+		\addcomma \addspace \printfield{year}%
+		\addcomma \addspace \printfield{edition}}
+	{\addsemicolon\space}
+	{\usebibmacro{postnote}}
+  
+  
+  
+% Alternative Notation der Fußnoten 
+% Zeigt sowohl den Nachnamen als auch den Vornamen an
+% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003} 
+\DeclareCiteCommand{\ifootcite}[\mkbibfootnote]
+  {\iffieldundef{prenote}%
+	{\usebibmacro{prenote}}%
+	\setunit{}}%
+  {\usebibmacro{citeindex}%
+	\printnames[sortname][1-1]{author}%
+	\addcomma \addspace \printfield{keywords}%
+	\addcomma \addspace \printfield{year}}
+  {\iffieldundef{postnote}%
+	{}%
+	{\usebibmacro{postnote}\addspace}%
+	\setunit{}}%
+{\adddot}
+
+
+%Autoren (Nachname, Vorname)
+\DeclareNameAlias{default}{family-given}
+
+%Reihenfolge von publisher, year, address verändern
+% Achtung, bisher nur für den Typ @book definiert
+
+%\renewcommand*{\newunitpunct}{\addcomma\space}
+
+%% Definiert @Book Eintrag
+\DeclareBibliographyDriver{book}{%
+  \printnames{author}\space% 
+  (\printfield{shorttitle} \addcomma\space \printfield{year})%
+  \setunit{\addcolon\space}
+  \printfield{title}%
+  \setunit*{,\space}%
+  \printfield{edition}%
+  \setunit*{\addcomma\space}%
+  \newunit\newblockpunct
+  \printlist{location}%
+  \setunit*{\addcolon \space}%
+  \printlist{publisher}
+  \setunit*{\addcomma\space}
+  \printfield{year}%
+  }
+
+%% Definiert @Online Eintrag
+\DeclareBibliographyDriver{online}{%
+  \printnames{author} \space%
+  (\printfield{shorttitle} \addcomma\space %
+	\printfield{year})%
+  \setunit{\addcolon\space}
+  \printfield{title}\space%
+  %\newunit\newblock
+ (\iffieldundef{month}%
+ 	{keine Datumsangabe}%
+ 	{{\isodate \printdate{}}%
+ 	})
+  \newunit\newblock
+  \printfield{url} \addcomma\space%
+  (\printfield{note})%
+  }
+
+%% Definiert @Online Eintrag
+\DeclareBibliographyDriver{misc}{%
+	\printnames{author}%
+	\setunit{\addcolon\space}
+	\printfield{title}%
+	\setunit*{,\space}%
+	%\newunit\newblock
+	\printfield{url}%
+	\printfield{note}%
+	\finentry}
+  
+%% Definiert @Article Eintrag
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}\space%
+  (\printfield{shorttitle} \addcomma\space \printfield{year})%
+  \setunit{\addcolon\space}
+  \printfield{title}%
+  \setunit*{\addcomma\space in:\space}%
+  %\newunit\newblock
+  \usebibmacro{journal}\addcomma\space%
+  \printfield{volume}%
+  \setunit*{\space(}%
+  \printfield{year}\newunit{)}%
+  \setunit*{\addcomma\space Nr.\space}%
+  \printfield{number}
+  \setunit*{\addcomma\space}%
+  \printfield{pages}}  
+
+
+%% Definiert @Collection Eintrag
+\DeclareBibliographyDriver{collection}{%
+	\printnames{editor}%
+	\newunit\space
+	(Hrsg.)\space%
+	(\printfield{shorttitle}\addcomma\space
+	\printfield{year})%
+	\setunit{\addcolon\space}
+	\printfield{title}%
+	\setunit*{,\space}%
+	\printfield{edition}%
+	\setunit*{\addcomma\space}%
+	\printlist{publisher} \addcolon
+	\newunit\newblockpunct
+	\printlist{location}%
+	\setunit*{\addcomma \space}%
+	\printfield{year}%
+	}
+
+%% Definiert @Collection Eintrag
+\DeclareBibliographyDriver{incollection}{%
+	\printnames{author}%
+	(\printfield{shorttitle} \addcomma\space \printfield{year})%
+	\setunit{\addcolon\space}
+	\printfield{title}%
+  	\setunit*{\addcomma\space in:\space}%
+	\printnames{editor}%
+	\newunit\space(Hrsg.),%
+	\setunit*{\space}
+	\printfield{booktitle}%
+	\setunit*{\space}%
+	\printfield{year}%
+	\setunit*{,\space}% 
+  	\setunit*{\addcomma\space}%
+	\printfield{pages}}
+
+%Doppelpunkt nach dem letzten Autor
+\renewcommand*{\labelnamepunct}{\addcolon\addspace }
+
+%Komma an Stelle des Punktes
+\renewcommand*{\newunitpunct}{\addcomma\space}
+
+%Autoren durch Semikolon trennen
+\newcommand*{\bibmultinamedelim}{\addcomma\space}% 
+\newcommand*{\bibfinalnamedelim}{\addcomma\space}% 
+\AtBeginBibliography{% 
+  \let\multinamedelim\bibmultinamedelim 
+  \let\finalnamedelim\bibfinalnamedelim 
+}
+
+%Titel nicht kursiv anzeigen 
+\DeclareFieldFormat{title}{#1\isdot}
+
+
+
